@@ -26,14 +26,11 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
-
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: |
-               dist
-               !./node_modules
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
@@ -56,20 +53,3 @@ jobs:
           slot-name: 'stage'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_33963AE817BA4C4680886CF4A8DCAE14 }}
           package: .
-
-  swap: 
-    runs-on: ubuntu-latest
-    steps: 
-    - name: Azure Login
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Azure CLI script file
-      uses: azure/CLI@v1
-      with:
-        azcliversion: latest
-        inlineScript: |
-          chmod +x $GITHUB_WORKSPACE/scripts/sampleScript.sh
-          $GITHUB_WORKSPACE/scripts/app_service_swap_slot.sh     
-      
