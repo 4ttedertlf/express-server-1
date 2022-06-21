@@ -6,7 +6,7 @@ name: Build and deploy Node.js app to Azure Web App - 4tt-1
 on:
   push:
     branches:
-      - main
+      - 4t/0620-swap
   workflow_dispatch:
 
 jobs:
@@ -54,3 +54,20 @@ jobs:
           slot-name: 'stage'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_33963AE817BA4C4680886CF4A8DCAE14 }}
           package: .
+
+  swap: 
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Azure CLI script file
+      uses: azure/CLI@v1
+      with:
+        azcliversion: latest
+        inlineScript: |
+          chmod +x $GITHUB_WORKSPACE/scripts/sampleScript.sh
+          $GITHUB_WORKSPACE/app_service_swap_slot.sh     
+      

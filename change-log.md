@@ -1,5 +1,8 @@
 ## June 20, 2022
 
+### branch: 4t/0620-swap
+* Scripts/app-service-swap-slot.sh
+
 ### branch: diberry/0616-config
 * version: 1.0.2
 * Installed:
