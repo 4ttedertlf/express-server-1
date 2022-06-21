@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - 4tt-1
+name: not main branch, no swap - 4tt-1
 
 on:
   push:
@@ -54,18 +54,3 @@ jobs:
           slot-name: 'stage'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_33963AE817BA4C4680886CF4A8DCAE14 }}
           package: .
-  swap: 
-    runs-on: ubuntu-latest
-    needs: deploy
-    steps: 
-    - name: Azure Login
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Azure CLI script file
-      uses: azure/CLI@v1
-      with:
-        azcliversion: latest
-        inlineScript: |
-          az webapp deployment slot swap --slot stage --target-slot production --action swap --name 4tt-1 --resource-group basic-express-typescript
