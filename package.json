@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "info:dev": "following scripts are for local development",
-    "start:dev": "cross-env-shell DEBUG=express:* ts-node-dev -r dotenv/config ./src/app.ts dotenv_config_path=./.env dotenv_config_debug=true",
+    "dev:start": "cross-env-shell DEBUG=express:* ts-node-dev -r dotenv/config ./src/app.ts dotenv_config_path=./.env dotenv_config_debug=true",
     "test:dev": "jest --runInBand --detectOpenHandles --forceExit --verbose --coverage",
     "info:cicd:": "following scripts are for CICD actions/pipelines",
     "cicd:build": "tsc && cp ./package.json ./dist/ && ls -la",
