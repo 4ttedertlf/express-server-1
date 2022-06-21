@@ -71,5 +71,5 @@ jobs:
         azcliversion: latest
         inlineScript: |
           chmod +x $GITHUB_WORKSPACE/scripts/sampleScript.sh
-          $GITHUB_WORKSPACE/app_service_swap_slot.sh     
+          $GITHUB_WORKSPACE/scripts/app_service_swap_slot.sh     
       
