@@ -58,7 +58,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: deploy
     steps: 
-    - uses: actions/checkout@v2
     - name: Azure Login
       uses: azure/login@v1
       with:
@@ -69,5 +68,4 @@ jobs:
       with:
         azcliversion: latest
         inlineScript: |
-          chmod +x $GITHUB_WORKSPACE/scripts/app-service-swap-slot.sh
-          $GITHUB_WORKSPACE/scripts/app-service-swap-slot.sh
+          az webapp deployment slot swap --slot stage --target-slot production --action swap --name 4tt-1 --resource-group basic-express-typescript
