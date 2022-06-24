@@ -6,7 +6,7 @@ name: stage
 on:
   push:
     branches:
-      - main
+      - t4/0623-swap-slot
   workflow_dispatch:
 
 jobs:
@@ -60,3 +60,30 @@ jobs:
           slot-name: 'stage'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_33963AE817BA4C4680886CF4A8DCAE14 }}
           package: .
+      - name: Ping the site
+        id: ping stage
+        uses: srt32/uptime@master
+        with:
+          url-to-hit: "https://4tt-1-stage.azurewebsites.net"
+          expected-statuses: "200,301"
+  swap: 
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps: 
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Azure CLI script file
+      uses: azure/CLI@v1
+      with:
+        azcliversion: latest
+        inlineScript: |
+          az webapp deployment slot swap --slot stage --target-slot production --action swap --name 4tt-1 --resource-group basic-express-typescript --verbose
+    - name: Ping the site
+      id: ping stage
+      uses: srt32/uptime@master
+      with:
+        url-to-hit: "https://4tt-1.azurewebsites.net"
+        expected-statuses: "200,301"

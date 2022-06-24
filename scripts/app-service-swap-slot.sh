@@ -1,1 +1,1 @@
-az webapp deployment slot swap --slot stage --target-slot production --action swap --name 4tt-1 --resource-group basic-express-typescript
+az webapp deployment slot swap --slot stage --target-slot production --action swap --name 4tt-1 --resource-group basic-express-typescript --verbose
