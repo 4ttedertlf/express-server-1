@@ -6,7 +6,7 @@ name: stage
 on:
   push:
     branches:
-      - t4/0623-swap-slot
+      - 0623-swap-slot
   workflow_dispatch:
 
 jobs:
