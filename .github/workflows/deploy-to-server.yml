@@ -25,13 +25,19 @@ jobs:
         run: |
           npm install
           npm run cicd:build --if-present
+      - name: dist-server
+        run: |
+          mkdir dist-server
+          mv ./dist/src/*.* dist-server
+          cp package.json dist-server
+          ls dist-server
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
           path: |
-               dist
-               !./node_modules
+               dist-server
 
   deploy:
     runs-on: ubuntu-latest
