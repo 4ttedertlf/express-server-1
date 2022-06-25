@@ -2,7 +2,7 @@ import { MongoClient, ObjectId, Db, Collection } from "mongodb";
 
 let mongoClient: any;
 let db: any;
-let defaultCollectionName =
+const defaultCollectionName =
   process.env.AZURE_COSMOS_DATABASE_DEFAULT_COLLECTION_NAME;
 let defaultCollection: any = undefined;
 
@@ -59,7 +59,8 @@ export async function getById(collectionName: string, id: any) {
 
   if (!id) return null;
 
-  const upload = await db.collection(collectionName)
+  const upload = await db
+    .collection(collectionName)
     .findOne({ _id: new ObjectId(id) });
   return toJson(upload);
 }
@@ -85,6 +86,7 @@ export async function add(collectionName: string, obj: any) {
 export async function update(collectionName: string, obj: any) {
   if (!collectionName) throw Error("MongoDB: collection name is missing");
 
-  return await db.collection(collectionName)
+  return await db
+    .collection(collectionName)
     .updateOne({ _id: new ObjectId(obj.id) }, { $set: obj });
 }
