@@ -33,7 +33,7 @@ jobs:
       - name: dist-server
         run: |
           mkdir dist-server
-          mv ./dist/src/*.* dist-server
+          mv ./dist/src dist-server
           cp package.json dist-server
           ls dist-server
 
