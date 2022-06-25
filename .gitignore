@@ -3,3 +3,4 @@ dist
 node_modules
 .env
 temp.txt
+.DS_Store
