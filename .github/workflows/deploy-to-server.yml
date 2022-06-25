@@ -6,7 +6,7 @@ name: stage
 on:
   push:
     branches:
-      - main
+      - 0625/build-prep
   workflow_dispatch:
 
 jobs:
@@ -24,7 +24,9 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
+          npm run cicd:lint --if-present
           npm run cicd:build --if-present
+          npm run cicd:test --if-present
       - name: dist-server
         run: |
           mkdir dist-server
