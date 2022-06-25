@@ -27,6 +27,9 @@ jobs:
           npm run cicd:lint --if-present
           npm run cicd:build --if-present
           npm run cicd:test --if-present
+        env:
+          AZURE_COSMOS_CONNECTION_STRING: ${{ secrets.AZURE_COSMOS_CONNECTION_STRING }}
+          AZURE_COSMOS_DATABASE_NAME: ${{ secrets.AZURE_COSMOS_DATABASE_NAME }}
       - name: dist-server
         run: |
           mkdir dist-server
