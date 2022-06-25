@@ -6,7 +6,7 @@ name: stage
 on:
   push:
     branches:
-      - 0625/build-prep
+      - main
   workflow_dispatch:
 
 jobs:
