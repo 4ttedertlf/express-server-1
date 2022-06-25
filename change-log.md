@@ -1,3 +1,18 @@
+## June 25, 2022
+
+* version: 1.0.3
+* installed: 
+    * Supertest
+* src: 
+    * added index.ts and /api/status
+    * tsconfig - "resolveJsonModule": true
+    * 404 test
+
+* research:
+    * https://losikov.medium.com/part-4-node-js-express-typescript-unit-tests-with-jest-5204414bf6f0
+    * https://github.com/losikov/api-example/blob/master/src/tests/user.ts
+    * https://github.com/microsoft/TypeScript-Node-Starter/blob/master/src/app.ts
+
 ## June 20, 2022
 
 ### branch: 4t/0620-swap
