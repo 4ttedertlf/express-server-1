@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from "express";
 import { AzureKeyVaultSecrets } from "./azure-key-vault-secrets";
 import * as database from "./mongo-database";
 import statusRouter from "./routes/status";
+import * as appPackage from "../package.json";
 import debug from "debug";
 debug("express-react:server");
 console.log(process.env);
@@ -28,6 +29,11 @@ database
       `MongoDB connection error. Please make sure MongoDB is running. ${err}`
     );
     process.exit();
+  });
+
+  app.use(function(req, res, next) {
+    res.setHeader('appver', appPackage.version || 'null' )
+    next();
   });
 
 app.get("/", async (req: Request, res: Response) => {
