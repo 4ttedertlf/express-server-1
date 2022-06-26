@@ -11,5 +11,6 @@
   },
   "lib":[
     "ES2015"
-  ] 
+  ] ,
+  "exclude": ["node_modules/**/*", "dist/**/*", "coverage/**/*", "scripts/**/*"],
 }
