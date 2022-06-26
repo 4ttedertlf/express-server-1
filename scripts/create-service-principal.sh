@@ -1,0 +1,1 @@
+az ad sp create-for-rbac --name "4ttedertlf-server-rg-basic-express-typescript" --role contributor  --scopes "/subscriptions/28e/resourceGroups/abc"  --sdk-auth true
