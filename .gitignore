@@ -1,5 +1,6 @@
 coverage
 dist
+dist-server
 node_modules
 .env
 temp.txt

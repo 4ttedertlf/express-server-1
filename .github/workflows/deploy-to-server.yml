@@ -30,12 +30,16 @@ jobs:
         env:
           AZURE_COSMOS_CONNECTION_STRING: ${{ secrets.AZURE_COSMOS_CONNECTION_STRING }}
           AZURE_COSMOS_DATABASE_NAME: ${{ secrets.AZURE_COSMOS_DATABASE_NAME }}
+      - name: remove test from build
+        run: |
+          rm -rf ./dist/src/__tests__
+          rm -rf ./dist/tests
       - name: dist-server
         run: |
           mkdir dist-server
           mv ./dist/src dist-server
           cp package.json dist-server
-          ls dist-server
+          ls -Rla dist-server
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
