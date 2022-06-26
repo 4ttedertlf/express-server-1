@@ -2,6 +2,11 @@ import express from "express";
 import * as appPackage from "../../package.json";
 const router = express.Router();
 
+router.use((req, res, next) => {
+
+  next();
+});
+
 /* GET status. */
 //curl -X GET "http://localhost:8080/api/status"
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

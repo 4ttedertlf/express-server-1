@@ -16,6 +16,7 @@ export async function connectApp(
   mongoClient = new MongoClient(connectionString);
   db = mongoClient.db(databaseName);
   defaultCollection = db.collection(defaultCollectionName);
+  return mongoClient;
 }
 export async function disconnect() {
   await mongoClient.close();
