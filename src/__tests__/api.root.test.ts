@@ -2,30 +2,24 @@ import { connectApp } from "../app";
 import request from "supertest";
 import * as appPackage from "../../package.json";
 
-const routeBase = "/api/status";
+const routeBase = "/api";
 
-describe("Status route", function () {
-  test(`GET ${routeBase} 200`, async () => {
+describe("Api route", function () {
+  test(`GET ${routeBase} 404`, async () => {
+
     const app = await connectApp();
     const response = await request(app).get(routeBase);
     await app.locals.db.close();
 
-    expect(response.statusCode).toEqual(200);
-    const responseJson = JSON.parse(response.text);
-
-    expect(Object.keys(responseJson)).toContain("version");
-    expect(responseJson?.version).toEqual(appPackage.version);
+    expect(response.statusCode).toEqual(404);
   });
-  test(`GET ${routeBase}/ 200`, async () => {
+  test(`GET ${routeBase}/ 404`, async () => {
+
     const app = await connectApp();
     const response = await request(app).get(`${routeBase}/`);
     await app.locals.db.close();
 
-    expect(response.statusCode).toEqual(200);
-    const responseJson = JSON.parse(response.text);
-
-    expect(Object.keys(responseJson)).toContain("version");
-    expect(responseJson?.version).toEqual(appPackage.version);
+    expect(response.statusCode).toEqual(404);
   });
   test(`GET ${routeBase}/abc 404`, async () => {
     const app = await connectApp();
@@ -33,5 +27,6 @@ describe("Status route", function () {
     await app.locals.db.close();
 
     expect(response.statusCode).toEqual(404);
+
   });
 });
