@@ -7,7 +7,7 @@ import dataRouter from "./routes/data";
 import storageRouter from "./routes/storage";
 import { setHeaderWithAppVersion, checkTrailingSlash, preRouteWork } from "./middleware";
 
-import * as database from "./mongo-database";
+import * as database from "./azure/mongo-database";
 
 import debug from "debug";
 debug("express-react:server");

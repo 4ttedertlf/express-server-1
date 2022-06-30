@@ -1,5 +1,5 @@
 import express from "express";
-import { AzureKeyVaultSecrets } from "../azure-key-vault-secrets";
+import { AzureKeyVaultSecrets } from "../azure/azure-key-vault-secrets";
 const router = express.Router();
 
 router.use((req, res, next) => {

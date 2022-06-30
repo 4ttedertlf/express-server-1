@@ -1,7 +1,7 @@
 import express from "express";
 import * as appPackage from "../../package.json";
 const router = express.Router();
-import * as database from "../mongo-database";
+import * as database from "../azure/mongo-database";
 
 router.use((req, res, next) => {
 

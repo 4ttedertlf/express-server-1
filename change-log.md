@@ -1,3 +1,13 @@
+## June 30, 2022
+
+* version: 1.0.4
+* installed:
+    * azure/storage-blob
+* src: 
+    * storage class
+    * storage route
+    * storage test
+
 ## June 25, 2022
 
 * version: 1.0.3

@@ -1,6 +1,6 @@
 import { connectApp } from "../app";
 import request from "supertest";
-import { disconnect } from './../mongo-database'; 
+import { disconnect } from '../azure/mongo-database'; 
 
 const routeBase = "/api/data";
 const queryStringName = `collection`;
