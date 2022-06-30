@@ -4,6 +4,7 @@ import rootRouter from "./routes/root";
 import statusRouter from "./routes/status";
 import secretRouter from "./routes/secret";
 import dataRouter from "./routes/data";
+import storageRouter from "./routes/storage";
 import { setHeaderWithAppVersion, checkTrailingSlash, preRouteWork } from "./middleware";
 
 import * as database from "./mongo-database";
@@ -24,6 +25,7 @@ function configureApp(app: Express) {
   app.use("/api/status", statusRouter);
   app.use("/api/secret", secretRouter);
   app.use("/api/data", dataRouter);
+  app.use("/api/storage", storageRouter);
 
   app.use("/api/test", (req, res, next) => {
     return res.status(200).send("test");
@@ -44,7 +46,10 @@ export const connectApp = async () => {
       connectionString: process.env.AZURE_COSMOS_CONNECTION_STRING,
       databaseName:
         (process.env.AZURE_COSMOS_DATABASE_NAME as string) || "dev-server",
-      keyVaultName: process.env.AZURE_KEY_VAULT_NAME
+      keyVaultName: process.env.AZURE_KEY_VAULT_NAME,
+      storageName: process.env.AZURE_STORAGE_RESOURCE_NAME,
+      storageDefaultContainer: process.env.AZURE_STORAGE_BLOB_DEFAULT_CONTAINER,
+      storageSAS: process.env.AZURE_STORAGE_BLOB_SAS_TOKEN
     };
 
     if (!appConfiguration.connectionString)

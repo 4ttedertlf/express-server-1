@@ -25,6 +25,7 @@
   "dependencies": {
     "@azure/identity": "^2.0.5",
     "@azure/keyvault-secrets": "^4.4.0",
+    "@azure/storage-blob": "^12.10.0",
     "@types/jest": "^28.1.1",
     "@types/supertest": "^2.0.12",
     "cross-env": "^7.0.3",
